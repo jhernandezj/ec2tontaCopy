@@ -35,12 +35,14 @@ data "aws_ami" "amazon_linux_2" {
 # Estado remoto
 # ---------------------------------------------------------
 data "terraform_remote_state" "remote_state" {
+  # Define the backend configuration for the remote state (required argument)
   backend {
     type = "s3"
     bucket = "tf-state-pharos-269433206282-eu-west-1"
     key    = "aws_vpc_tonta/Structuralia/dev/vptonta/terraform.tfstate"
   }
 
+  # Specify the path to the desired output within the remote state (optional argument)
   path = "outputs.public_subnets.value"
 }
 
