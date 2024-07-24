@@ -34,14 +34,6 @@ data "aws_ami" "amazon_linux_2" {
 # ---------------------------------------------------------
 # Estado remoto
 # ---------------------------------------------------------
-terraform {
-  backend "s3" {
-    bucket = "tf-state-pharos-269433206282-eu-west-1"
-    key    = "aws_vpc_tonta/Structuralia/dev/vptonta/terraform.tfstate"
-    region = "eu-west-1"
-  }
-}
-
 data "terraform_remote_state" "remote_state" {
   backend = "s3"
   config = {
